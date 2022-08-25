@@ -1,0 +1,9 @@
+---
+-   name: Add authorized key for deploy
+    hosts: site
+    remote_user: root
+    tasks:
+        -   name: Add authorized key for user
+            authorized_key:
+                user: deploy
+                key: "{{ lookup('file', 'file/deploy_ed25519.pub') }}"
